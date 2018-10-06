@@ -9,19 +9,14 @@ javacOptions  ++= Seq("-source", "1.8", "-target", "1.8")
 
 libraryDependencies += "org.scalatra.scalate" %% "scalate-core" % "1.9.0"
 
-// For SBT 0.13.x
-//scalateSettings
-
 // For SBT 1.x
 import org.fusesource.scalate.ScalatePlugin._
 
-ScalateKeys.scalateTemplateConfig in Compile := {
-  val base = (sourceDirectory in Compile).value
-  Seq(
-    TemplateConfig(
-      (sourceDirectory in Compile).value / "scalate",
-      Seq(),
-      Seq()
-    )
+scalateSettings
+ScalateKeys.scalateTemplateConfig in Compile := Seq(
+  TemplateConfig(
+    (sourceDirectory in Compile).value / "scalate",
+    Seq(),
+    Seq()
   )
-}
+)
